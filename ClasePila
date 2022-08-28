@@ -1,0 +1,46 @@
+import numpy as np
+
+class Pila:
+    __items = []
+    __tope = None
+    __tamano = 0
+
+    def __init__(self, tam):
+        self.__items = np.zeros(tam)
+        self.__tope = 0
+        self.__tamano = tam
+
+    def apilarinicio(self,x):
+            self.__items[self.__tope] = x
+            self.__tope += 1
+
+
+    def apilar(self, x):
+
+
+        if self.__items[self.__tope-1] > x:
+            self.__tope += 1
+            self.__items[self.__tope-1] = x
+        elif self.__items[self.__tope-1] == 0:
+            self.__tope += 1
+            self.__items[self.__tope-1] = x
+        else: return x
+
+
+
+    def desapilar(self):
+        x = self.__items[self.__tope-1]
+        self.__items[self.__tope-1] = 0
+        self.__tope -= 1
+        return int(x)
+
+
+    def es_vacia(self):
+        """ Devuelve True si la lista está vacía, False si no. """
+        bandera = True
+        if self.__tope != 0:
+            bandera = False
+        return bandera
+
+    def mostrar(self):
+        print(self.__items)
