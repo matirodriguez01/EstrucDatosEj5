@@ -19,36 +19,62 @@ if __name__=='__main__':
 
     juegoterminado = False
     while not juegoterminado:
-        mov1 = int(input(f"Ingrese pila de donde quiere sacar la ficha(Numero entre {1} y {tam}): Presione 0 cuando haya finalizado el juego."))
-        if mov1 == 1:
-            if pila1.es_vacia():
-                print("No es posible realizar el movimiento, la pila esta vacia\n")
-                pila1.mostrar()
-                pila2.mostrar()
-                pila3.mostrar()
-                cantmov += 1
-            else:
-                ficha = pila1.desapilar()
-                mov2 = int(input("Ingrese pila donde quiere mover la ficha: "))
-                if mov2 == 1:
-                    print("No se puede mover la ficha sobre la misma pila en la que se encuentra\n")
+        if pila1.es_vacia() and pila2.es_vacia():
+            print("Juego Terminado")
+            juegoterminado = True
+
+        else:
+            mov1 = int(input(f"Ingrese pila de donde quiere sacar la ficha(Numero entre {1} y {tam}): "))
+
+            if mov1 == 1:
+                if pila1.es_vacia():
+                    print("No es posible realizar el movimiento, la pila esta vacia\n")
                     pila1.mostrar()
                     pila2.mostrar()
                     pila3.mostrar()
-                    print("\n")
                     cantmov += 1
-                elif mov2 == 2:
-                    alt = pila2.apilar(ficha)
-                    if alt == ficha:
-                        print("La ficha es más grande que la que se encuentra en la pila\n")
-                        pila1.apilar(alt)
+                else:
+                    ficha = pila1.desapilar()
+                    mov2 = int(input("Ingrese pila donde quiere mover la ficha: "))
+                    if mov2 == 1:
+                        print("No se puede mover la ficha sobre la misma pila en la que se encuentra\n")
+                        pila1.apilar(ficha)
                         pila1.mostrar()
                         pila2.mostrar()
                         pila3.mostrar()
                         print("\n")
                         cantmov += 1
+                    elif mov2 == 2:
+                        alt = pila2.apilar(ficha)
+                        if alt == ficha:
+                            print("La ficha es más grande que la que se encuentra en la pila\n")
+                            pila1.apilar(alt)
+                            pila1.mostrar()
+                            pila2.mostrar()
+                            pila3.mostrar()
+                            print("\n")
+                            cantmov += 1
 
-                    else:
+                        else:
+                                print("La ficha se apilo correctamente\n")
+                                pila1.mostrar()
+                                pila2.mostrar()
+                                pila3.mostrar()
+                                print("\n")
+                                cantmov += 1
+
+                    elif mov2 == 3:
+                        alt = pila3.apilar(ficha)
+                        if alt == ficha:
+                            print("La ficha es más grande que la que se encuentra en la pila\n")
+                            pila1.apilar(alt)
+                            pila1.mostrar()
+                            pila2.mostrar()
+                            pila3.mostrar()
+                            print("\n")
+                            cantmov += 1
+
+                        else:
                             print("La ficha se apilo correctamente\n")
                             pila1.mostrar()
                             pila2.mostrar()
@@ -56,150 +82,132 @@ if __name__=='__main__':
                             print("\n")
                             cantmov += 1
 
-                elif mov2 == 3:
-                    alt = pila3.apilar(ficha)
-                    if alt == ficha:
-                        print("La ficha es más grande que la que se encuentra en la pila\n")
-                        pila1.apilar(alt)
-                        pila1.mostrar()
-                        pila2.mostrar()
-                        pila3.mostrar()
-                        print("\n")
-                        cantmov += 1
-
-                    else:
-                        print("La ficha se apilo correctamente\n")
-                        pila1.mostrar()
-                        pila2.mostrar()
-                        pila3.mostrar()
-                        print("\n")
-                        cantmov += 1
-
-        elif mov1 == 2:
-            if pila2.es_vacia():
-                print("No es posible realizar el movimiento, la pila esta vacia\n")
-                pila1.mostrar()
-                pila2.mostrar()
-                pila3.mostrar()
-                print("\n")
-                cantmov += 1
-
-            else:
-                ficha = pila2.desapilar()
-                mov2 = int(input("Ingrese pila donde quiere mover la ficha: "))
-                if mov2 == 1:
-                    alt = pila1.apilar(ficha)
-                    if alt == ficha:
-                        print("La ficha es más grande que la que se encuentra en la pila\n")
-                        pila2.apilar(alt)
-                        pila1.mostrar()
-                        pila2.mostrar()
-                        pila3.mostrar()
-                        print("\n")
-                        cantmov += 1
-
-                    else:
-                        print("La ficha se apilo correctamente\n")
-                        pila1.mostrar()
-                        pila2.mostrar()
-                        pila3.mostrar()
-                        print("\n")
-                        cantmov += 1
-
-
-                elif mov2 == 2:
-                    print("No se puede mover la ficha sobre la misma pila en la que se encuentra\n")
+            elif mov1 == 2:
+                if pila2.es_vacia():
+                    print("No es posible realizar el movimiento, la pila esta vacia\n")
                     pila1.mostrar()
                     pila2.mostrar()
                     pila3.mostrar()
                     print("\n")
                     cantmov += 1
 
-                elif mov2 == 3:
-                    alt = pila3.apilar(ficha)
-                    if alt == ficha:
-                        print("La ficha es más grande que la que se encuentra en la pila\n")
-                        pila2.apilar(alt)
+                else:
+                    ficha = pila2.desapilar()
+                    mov2 = int(input("Ingrese pila donde quiere mover la ficha: "))
+                    if mov2 == 1:
+                        alt = pila1.apilar(ficha)
+                        if alt == ficha:
+                            print("La ficha es más grande que la que se encuentra en la pila\n")
+                            pila2.apilar(alt)
+                            pila1.mostrar()
+                            pila2.mostrar()
+                            pila3.mostrar()
+                            print("\n")
+                            cantmov += 1
+
+                        else:
+                            print("La ficha se apilo correctamente\n")
+                            pila1.mostrar()
+                            pila2.mostrar()
+                            pila3.mostrar()
+                            print("\n")
+                            cantmov += 1
+
+
+                    elif mov2 == 2:
+                        print("No se puede mover la ficha sobre la misma pila en la que se encuentra\n")
+                        pila2.apilar(ficha)
                         pila1.mostrar()
                         pila2.mostrar()
                         pila3.mostrar()
                         print("\n")
                         cantmov += 1
 
-                    else:
-                        print("La ficha se apilo correctamente\n")
-                        pila1.mostrar()
-                        pila2.mostrar()
-                        pila3.mostrar()
-                        print("\n")
-                        cantmov += 1
+                    elif mov2 == 3:
+                        alt = pila3.apilar(ficha)
+                        if alt == ficha:
+                            print("La ficha es más grande que la que se encuentra en la pila\n")
+                            pila2.apilar(alt)
+                            pila1.mostrar()
+                            pila2.mostrar()
+                            pila3.mostrar()
+                            print("\n")
+                            cantmov += 1
 
-        elif mov1 == 3:
-            if pila3.es_vacia():
-                print("No es posible realizar el movimiento, la pila esta vacia\n")
-                pila1.mostrar()
-                pila2.mostrar()
-                pila3.mostrar()
-                print("\n")
-                cantmov += 1
+                        else:
+                            print("La ficha se apilo correctamente\n")
+                            pila1.mostrar()
+                            pila2.mostrar()
+                            pila3.mostrar()
+                            print("\n")
+                            cantmov += 1
 
-            else:
-                ficha = pila3.desapilar()
-                mov2 = int(input("Ingrese pila donde quiere mover la ficha: "))
-                if mov2 == 1:
-                    alt = pila1.apilar(ficha)
-                    if alt == ficha:
-                        print("La ficha es más grande que la que se encuentra en la pila\n")
-                        pila3.apilar(alt)
-                        pila1.mostrar()
-                        pila2.mostrar()
-                        pila3.mostrar()
-                        print("\n")
-                        cantmov += 1
-
-                    else:
-                        print("La ficha se apilo correctamente\n")
-                        pila1.mostrar()
-                        pila2.mostrar()
-                        pila3.mostrar()
-                        print("\n")
-                        cantmov += 1
-
-
-                elif mov2 == 2:
-                    alt = pila2.apilar(ficha)
-                    if alt == ficha:
-                        print("La ficha es más grande que la que se encuentra en la pila\n")
-                        pila3.apilar(alt)
-                        pila1.mostrar()
-                        pila2.mostrar()
-                        pila3.mostrar()
-                        print("\n")
-                        cantmov += 1
-
-                    else:
-                        print("La ficha se apilo correctamente\n")
-                        pila1.mostrar()
-                        pila2.mostrar()
-                        pila3.mostrar()
-                        print("\n")
-                        cantmov += 1
-
-
-                elif mov2 == 3:
-                    print("No se puede mover la ficha sobre la misma pila en la que se encuentra\n")
+            elif mov1 == 3:
+                if pila3.es_vacia():
+                    print("No es posible realizar el movimiento, la pila esta vacia\n")
                     pila1.mostrar()
                     pila2.mostrar()
                     pila3.mostrar()
                     print("\n")
                     cantmov += 1
 
-        elif mov1 == 0:
-            juegoterminado =True
+                else:
+                    ficha = pila3.desapilar()
+                    mov2 = int(input("Ingrese pila donde quiere mover la ficha: "))
+                    if mov2 == 1:
+                        alt = pila1.apilar(ficha)
+                        if alt == ficha:
+                            print("La ficha es más grande que la que se encuentra en la pila\n")
+                            pila3.apilar(alt)
+                            pila1.mostrar()
+                            pila2.mostrar()
+                            pila3.mostrar()
+                            print("\n")
+                            cantmov += 1
 
-        else: print("Error, ingrese numero de pila nuevamente\n")
+                        else:
+                            print("La ficha se apilo correctamente\n")
+                            pila1.mostrar()
+                            pila2.mostrar()
+                            pila3.mostrar()
+                            print("\n")
+                            cantmov += 1
+
+
+                    elif mov2 == 2:
+                        alt = pila2.apilar(ficha)
+                        if alt == ficha:
+                            print("La ficha es más grande que la que se encuentra en la pila\n")
+                            pila3.apilar(alt)
+                            pila1.mostrar()
+                            pila2.mostrar()
+                            pila3.mostrar()
+                            print("\n")
+                            cantmov += 1
+
+                        else:
+                            print("La ficha se apilo correctamente\n")
+                            pila1.mostrar()
+                            pila2.mostrar()
+                            pila3.mostrar()
+                            print("\n")
+                            cantmov += 1
+
+
+                    elif mov2 == 3:
+                        print("No se puede mover la ficha sobre la misma pila en la que se encuentra\n")
+                        pila3.apilar(ficha)
+                        pila1.mostrar()
+                        pila2.mostrar()
+                        pila3.mostrar()
+                        print("\n")
+                        cantmov += 1
+
+
+            else: print("Error, ingrese numero de pila nuevamente\n")
 
 
 
     print(f"\nUsted realizó {cantmov} movimientos. El número mínimo de jugadas que se podian realizar era {cantmovmin}")
+
 
